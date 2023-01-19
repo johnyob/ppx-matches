@@ -1,4 +1,4 @@
 (executable
  (name main)
  (preprocess
-  (pps ppx_template)))
+  (pps ppx_matches)))

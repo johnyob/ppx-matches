@@ -2,10 +2,10 @@
 
 (generate_opam_files true)
 
-(name ppx_template)
+(name ppx_matches)
 
 (source
- (github johnyob/ppx-template))
+ (github johnyob/ppx-matches))
 
 (license MIT)
 
@@ -14,7 +14,7 @@
 (maintainers "ajob410@gmail.com")
 
 (package
- (name ppx_template)
+ (name ppx_matches)
  (depends
   ocaml
   (dune

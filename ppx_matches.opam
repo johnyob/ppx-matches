@@ -3,8 +3,8 @@ opam-version: "2.0"
 maintainer: ["ajob410@gmail.com"]
 authors: ["Alistair O'Brien"]
 license: "MIT"
-homepage: "https://github.com/johnyob/ppx-template"
-bug-reports: "https://github.com/johnyob/ppx-template/issues"
+homepage: "https://github.com/johnyob/ppx-matches"
+bug-reports: "https://github.com/johnyob/ppx-matches/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.6" & >= "3.6"}
@@ -26,4 +26,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/johnyob/ppx-template.git"
+dev-repo: "git+https://github.com/johnyob/ppx-matches.git"

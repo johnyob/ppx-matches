@@ -4,7 +4,7 @@ open Core
     https://tarides.com/blog/2019-05-09-an-introduction-to-ocaml-ppx-ecosystem
 *)
 
-let ppx_name = "ppx_template"
+let ppx_name = "ppx_matches"
 
 module Test = struct
   type kind =
