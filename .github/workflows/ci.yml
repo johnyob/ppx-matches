@@ -1,0 +1,41 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with: 
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v30
+      - uses: cachix/cachix-action@v16 
+        with:
+          name: ppx-matches
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - run: nix --version
+
+      - name: Lint commits 
+        if: github.event_name == 'pull_request'
+        run: |
+          nix --accept-flake-config run .#ci-cz -- check \
+            --rev-range ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+
+
+      - name: Lint commits 
+        if: github.event_name == 'push'
+        run: |
+          nix --accept-flake-config run .#ci-cz -- check \
+            --rev-range ${{ github.event.before }}..${{ github.event.head }}
+
+
+      - name: Build and Check 
+        run: nix --accept-flake-config flake check -j auto
+      

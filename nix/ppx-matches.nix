@@ -4,7 +4,7 @@
 }:
 with ocamlPackages;
   buildDunePackage {
-    pname = "ppx-matches";
+    pname = "ppx_matches";
     version = "dev";
 
     src = lib.cleanSource ../.;

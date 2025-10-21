@@ -30,3 +30,6 @@ _opam/
 
 # pre-commit-hooks 
 /.pre-commit-config.yaml
+
+# Nix generated files
+result
