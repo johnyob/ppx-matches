@@ -47,15 +47,20 @@ module Matches = struct
     match when_ with
     | None ->
       assert_pat_is_not_binding ~loc pat;
+      (* Disable redundant case warning *)
       [%expr
-        match [%e matchee] with
-        | [%p pat] -> true
-        | _ -> false]
+        begin [@warning "-11"]
+          match [%e matchee] with
+          | [%p pat] -> true
+          | _ -> false
+        end]
     | Some when_ ->
       [%expr
-        match [%e matchee] with
-        | [%p pat] when [%e when_] -> true
-        | _ -> false]
+        begin [@warning "-11"]
+          match [%e matchee] with
+          | [%p pat] when [%e when_] -> true
+          | _ -> false
+        end]
   ;;
 
   let expand ~loc pat ?when_ () =
@@ -63,12 +68,12 @@ module Matches = struct
     | None ->
       assert_pat_is_not_binding ~loc pat;
       [%expr
-        function
+        function[@warning "-11"]
         | [%p pat] -> true
         | _ -> false]
     | Some when_ ->
       [%expr
-        function
+        function[@warning "-11"]
         | [%p pat] when [%e when_] -> true
         | _ -> false]
   ;;

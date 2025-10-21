@@ -1,0 +1,82 @@
+let () = assert ((match 42 with | 42 -> true | _ -> false)[@warning "-11"])
+let () =
+  assert (not ((match 43 with | 42 -> true | _ -> false)[@warning "-11"]))
+let () =
+  assert ((match "hello" with | "hello" -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert
+    (not ((match "world" with | "hello" -> true | _ -> false)
+       [@warning "-11"]))
+let () =
+  assert ((match None with | None -> true | _ -> false)[@warning "-11"])
+let () =
+  assert ((match Some 1 with | Some _ -> true | _ -> false)[@warning "-11"])
+let () =
+  assert
+    (not ((match None with | Some _ -> true | _ -> false)[@warning "-11"]))
+let () =
+  assert ((match (1, 2) with | (_, 2) -> true | _ -> false)[@warning "-11"])
+let () =
+  assert
+    (not ((match (1, 3) with | (_, 2) -> true | _ -> false)[@warning "-11"]))
+let () =
+  assert ((match [|1;2|] with | [|1;_|] -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert
+    (not ((match [|2;1|] with | [|1;_|] -> true | _ -> false)
+       [@warning "-11"]))
+type point = {
+  x: int ;
+  y: int }
+let p = { x = 1; y = 2 }
+let () =
+  assert ((match p with | { x = 1; y = _ } -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert
+    (not ((match p with | { x = 2; y = _ } -> true | _ -> false)
+       [@warning "-11"]))
+let () =
+  assert ((match 2 with | 1 | 2 | 3 -> true | _ -> false)[@warning "-11"])
+let () =
+  assert
+    (not ((match 4 with | 1 | 2 | 3 -> true | _ -> false)[@warning "-11"]))
+let bar = Some 4
+let () =
+  assert ((match bar with | Some x when x > 2 -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert ((match 5 with | x when x > 0 -> true | _ -> false)[@warning "-11"])
+let () =
+  assert
+    (not ((match (-1) with | x when x > 0 -> true | _ -> false)
+       [@warning "-11"]))
+let () =
+  assert
+    ((match Some 4 with | Some x when (x mod 2) = 0 -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert
+    (not
+       ((match Some 3 with | Some x when (x mod 2) = 0 -> true | _ -> false)
+       [@warning "-11"]))
+let foo = 'f'
+let () =
+  assert ((match foo with | 'A'..'Z' | 'a'..'z' -> true | _ -> false)
+    [@warning "-11"])
+let nested = Some (1, [|2;3|])
+let () =
+  assert ((match nested with | Some (1, [|_;3|]) -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert
+    (not ((match nested with | Some (2, [|_;3|]) -> true | _ -> false)
+       [@warning "-11"]))
+let lazy_val = lazy 42
+let () =
+  assert ((match lazy_val with | (lazy _) -> true | _ -> false)
+    [@warning "-11"])
+let () =
+  assert ((match 42 with | (_ : int) -> true | _ -> false)[@warning "-11"])

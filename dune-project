@@ -15,9 +15,11 @@
 
 (package
  (name ppx_matches)
+ (synopsis "A syntax extension for Rust's `matches!` in OCaml 🐪")
  (depends
   ocaml
   (dune
    (>= 3.6))
   ppxlib
-  core))
+  core
+  (core_unix :with-test)))
