@@ -1,14 +1,12 @@
 # 🔥 ppx-matches
 > A syntax extension for Rust's `matches!` in OCaml 🐪
 
-[![OCaml-CI Build Status](https://img.shields.io/endpoint?url=https://ci.ocamllabs.io/badge/johnyob/ppx-matches/main&logo=ocaml)](https://ci.ocamllabs.io/github/johnyob/ppx-matches)
 
 ## Install 
 
 This library has not yet been released to `opam`. To install it, first 
 
 ```
-opam pin add --yes https://github.com/johnyob/ppx-matches.git
 opam install ppx_matches
 ```
 

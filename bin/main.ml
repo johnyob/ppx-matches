@@ -6,3 +6,5 @@ let () =
   print_endline "test";
   if [%matches? 'a' | 'b' | 'c'] chr then print_endline "Woo!" else print_endline "Bad :D"
 ;;
+
+let _ = [%matches? 'a' when false]
