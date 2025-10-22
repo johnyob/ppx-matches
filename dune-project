@@ -17,7 +17,8 @@
  (name ppx_matches)
  (synopsis "A syntax extension for Rust's `matches!` in OCaml 🐪")
  (depends
-  ocaml
+  (ocaml 
+    (>= 4.14.0))
   (dune
    (>= 3.6))
   ppxlib
