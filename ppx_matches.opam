@@ -8,8 +8,8 @@ homepage: "https://github.com/johnyob/ppx-matches"
 bug-reports: "https://github.com/johnyob/ppx-matches/issues"
 depends: [
   "ocaml" {>= "4.14.0"}
-  "dune" {>= "3.6" & >= "3.6"}
-  "ppxlib"
+  "dune" {>= "3.18"}
+  "ppxlib" {>= "0.31.0"}
   "core"
   "core_unix" {with-test}
   "odoc" {with-doc}
@@ -29,3 +29,4 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/johnyob/ppx-matches.git"
+x-maintenance-intent: ["(latest)"]
